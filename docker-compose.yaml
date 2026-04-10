@@ -6,6 +6,36 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+  user:
+    build:
+      dockerfile: user.dockerfile
+    image: talarisureshdevops/user:1.0.0
+    container_name: user
+    depends_on:
+      - redis
+      - mongodb
+  frontend:
+    build: 
+      dockerfile: frontend.dockerfile
+    image: talarisureshdevops/frontend
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - catalogue
+      - user
+      - cart
+  cart:
+    build:
+      dockerfile: cart.dockerfile
+    image: talarisureshdevops/cart:1.0.0
+    container_name: cart
+    depends_on:
+      - redis
+      - catalogue
+  redis:
+    image: redis:7.0
+    container_name: redis
   mongodb:
     build:
       dockerfile: mongodb.dockerfile
