@@ -15,15 +15,13 @@ services:
       container_name: mongodb
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    image: talarisureshdevops/frontend:1.0.0
+    build: ./frontend
+    image: joindevops/frontend:1.0.0
     container_name: frontend
     ports:
-      - "80:80"
+    - "80:80"
     depends_on:
-      - catalogue
+    - catalogue
 
 networks:
   default:
