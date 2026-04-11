@@ -15,8 +15,10 @@ services:
       container_name: mongodb
 
   frontend:
-    build: ./frontend
-    image: joindevops/frontend:1.0.0
+    build: 
+      context: .
+      dockerfile: frontend.dockerfile
+    image: talarisureshdevops/frontend:1.0.0
     container_name: frontend
     ports:
     - "80:80"
