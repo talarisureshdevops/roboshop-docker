@@ -7,4 +7,16 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+    mongodb:
+      build:
+        context: .
+        dockerfile: mongodb.dockerfile
+      image: talarisureshdevops/mongodb:1.0.0
+      container_name: mongodb
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+      
 
