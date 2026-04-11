@@ -14,6 +14,15 @@ services:
       image: talarisureshdevops/mongodb:1.0.0
       container_name: mongodb
 
+  frontend:
+    build: 
+      context: .
+      dockerfile: frontend.dockerfile
+    image: talarisureshdevops/frontend:1.0.0
+    container_name: frontend
+    depends_on:
+      - catalogue
+      
 networks:
   default:
     driver: bridge
