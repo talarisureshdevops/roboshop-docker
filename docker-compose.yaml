@@ -17,7 +17,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: frontend.dockerfile
+      dockerfile: Dockerfile
     image: talarisureshdevops/frontend:1.0.0
     container_name: frontend
     ports:
