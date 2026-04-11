@@ -8,13 +8,15 @@ services:
     depends_on:
       - mongodb
 
-  mongodb:
-    build:
+  user:
+    build: 
       context: .
-      dockerfile: mongodb.dockerfile
-    image: talarisureshdevops/mongodb:1.0.0
-    container_name: mongodb
-
+      dockerfile: user.dockerfile
+    image: talarisureshdevops/user:1.0.0
+    container_name: user
+    depends_on:
+      - redis
+      - mongodb
   frontend:
     build: 
       context: .
@@ -25,6 +27,17 @@ services:
       - "80:80"
     depends_on:
       - catalogue
+      - user
+  mongodb:
+    build:
+      context: .
+      dockerfile: mongodb.dockerfile
+    image: talarisureshdevops/mongodb:1.0.0
+    container_name: mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+
 
 networks:
   default:
