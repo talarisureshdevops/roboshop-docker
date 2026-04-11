@@ -7,7 +7,7 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
-    mongodb:
+  mongodb:
       build:
         context: .
         dockerfile: mongodb.dockerfile
