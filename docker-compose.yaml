@@ -17,7 +17,7 @@ services:
   frontend:
     build: 
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: frontend.dockerfile
     image: talarisureshdevops/frontend:1.0.0
     container_name: frontend
     depends_on:
