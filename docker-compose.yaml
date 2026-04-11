@@ -7,12 +7,13 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+
   mongodb:
-      build:
-        context: .
-        dockerfile: mongodb.dockerfile
-      image: talarisureshdevops/mongodb:1.0.0
-      container_name: mongodb
+    build:
+      context: .
+      dockerfile: mongodb.dockerfile
+    image: talarisureshdevops/mongodb:1.0.0
+    container_name: mongodb
 
   frontend:
     build: 
@@ -21,13 +22,11 @@ services:
     image: talarisureshdevops/frontend:1.0.0
     container_name: frontend
     ports:
-    - "80:80"
+      - "80:80"
     depends_on:
-    - catalogue
+      - catalogue
 
 networks:
   default:
     driver: bridge
     name: roboshop
-      
-
