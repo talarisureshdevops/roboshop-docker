@@ -16,13 +16,13 @@ services:
 
   frontend:
     build: 
-      context: .
-      dockerfile: frontend.dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     image: talarisureshdevops/frontend:1.0.0
     container_name: frontend
     depends_on:
       - catalogue
-      
+
 networks:
   default:
     driver: bridge
