@@ -1,12 +1,11 @@
 services:
   catalogue:
-    build: ./catalogue
     image: talarisureshdevops/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
+
   user:
-    build: ./user
     image: talarisureshdevops/user:1.0.0
     container_name: user
     depends_on:
@@ -14,21 +13,20 @@ services:
       - mongodb
 
   cart:
-    build: ./cart
     image: talarisureshdevops/cart:1.0.0
     container_name: cart
     depends_on:
       - redis
       - catalogue
+
   shipping:
-    build: ./shipping
     image: talarisureshdevops/shipping:1.0.0
     container_name: shipping
     depends_on:
       - mysql
       - cart
+
   payment:
-    build: ./payment
     image: talarisureshdevops/payment:1.0.0
     container_name: payment
     environment:
@@ -43,8 +41,8 @@ services:
       - rabbitmq
       - cart
       - user
+
   frontend:
-    build: ./frontend
     image: talarisureshdevops/frontend:1.0.0
     container_name: frontend
     ports:
@@ -55,29 +53,26 @@ services:
       - cart
       - shipping
       - payment
+
   mongodb:
-    build: ./mongodb
     image: talarisureshdevops/mongodb:1.0.0
     container_name: mongodb
-  
+
   redis:
     image: redis:7.0
     container_name: redis
 
   mysql:
-    build: ./mysql
     image: talarisureshdevops/mysql:1.0.0
     container_name: mysql
 
   rabbitmq:
     image: rabbitmq:3
-    environment: 
+    container_name: rabbitmq
+    environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
-    container_name: rabbitmq
 
 networks:
   default:
-    driver: bridge
     name: roboshop
-    external: false
