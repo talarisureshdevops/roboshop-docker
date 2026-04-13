@@ -61,7 +61,7 @@ services:
     container_name: mongodb
   
   redis:
-    build: redis:7.0
+    image: redis:7.0
     container_name: redis
 
   mysql:
@@ -70,7 +70,7 @@ services:
     container_name: mysql
 
   rabbitmq:
-    build: rabbitmq:3
+    image: rabbitmq:3
     environment: 
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
