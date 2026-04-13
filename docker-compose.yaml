@@ -15,7 +15,7 @@ services:
 
   cart:
     build: ./cart
-    image: talarisureshdevops/user:1.0.0
+    image: talarisureshdevops/cart:1.0.0
     container_name: cart
     depends_on:
       - redis
