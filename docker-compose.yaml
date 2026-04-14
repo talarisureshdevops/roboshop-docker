@@ -71,7 +71,7 @@ services:
     container_name: redis
 
   mysql:
-    image: ./mysql:1.0.0
+    build: ./mysql:1.0.0
     container_name: mysql
 
   rabbitmq:
