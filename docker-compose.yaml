@@ -1,6 +1,7 @@
 services:
   catalogue:
-    image: talarisureshdevops/catalogue:1.0.0
+    dockerfile: catalogue.dockerfile
+    image: catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
