@@ -1,34 +1,39 @@
 services:
   catalogue:
-    dockerfile: catalogue.dockerfile
-    image: catalogue:1.0.0
+ #  dockerfile: catalogue.dockerfile
+    build: ./catalogue:1.0.0
+  #  image: catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
 
   user:
-    image: talarisureshdevops/user:1.0.0
+   # image: talarisureshdevops/user:1.0.0
+    build: ./user:1.0.0
     container_name: user
     depends_on:
       - redis
       - mongodb
 
   cart:
-    image: talarisureshdevops/cart:1.0.0
+   # image: talarisureshdevops/cart:1.0.0
+    build: ./cart:1.0.0
     container_name: cart
     depends_on:
       - redis
       - catalogue
 
   shipping:
-    image: talarisureshdevops/shipping:1.0.0
+  # image: talarisureshdevops/shipping:1.0.0
+    build: ./shipping:1.0.0
     container_name: shipping
     depends_on:
       - mysql
       - cart
 
   payment:
-    image: talarisureshdevops/payment:1.0.0
+  #  image: talarisureshdevops/payment:1.0.0
+    build: ./payment:1.0.0
     container_name: payment
     environment:
       CART_HOST: "cart"
@@ -44,7 +49,8 @@ services:
       - user
 
   frontend:
-    image: talarisureshdevops/frontend:1.0.0
+  #  image: talarisureshdevops/frontend:1.0.0
+    build: ./frontend:1.0.0
     container_name: frontend
     ports:
       - "80:80"
@@ -56,7 +62,8 @@ services:
       - payment
 
   mongodb:
-    image: talarisureshdevops/mongodb:1.0.0
+  #  image: talarisureshdevops/mongodb:1.0.0
+    build: ./mongodb:1.0.0
     container_name: mongodb
 
   redis:
@@ -64,7 +71,7 @@ services:
     container_name: redis
 
   mysql:
-    image: talarisureshdevops/mysql:1.0.0
+    image: ./mysql:1.0.0
     container_name: mysql
 
   rabbitmq:
